@@ -111,12 +111,24 @@ class NxLocales extends LitElement {
       const clipboardItem = new ClipboardItem(clipboardItemData);
       try {
         await navigator.clipboard.write([clipboardItem]);
-      } catch {
-        this._message = {
-          text: 'The following pages were published. Use ctrl+a and ctrl+c to select and copy the URLs.',
-          manualCopyText: joined,
-        };
-        return false;
+      } catch (err) {
+        // Clipboard API can fail in cross-origin iframes; fall back to
+        // a hidden textarea + execCommand which still works in all browsers.
+        const ta = document.createElement('textarea');
+        ta.value = joined;
+        ta.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(ta);
+        ta.select();
+        const copied = document.execCommand('copy');
+        ta.remove();
+        if (!copied) {
+          console.error('Clipboard write failed, execCommand fallback also failed:', err);
+          this._message = {
+            text: 'The following pages were published. Use ctrl+a and ctrl+c to select and copy the URLs.',
+            manualCopyText: joined,
+          };
+          return false;
+        }
       }
     } else {
       this._message = { text: 'No pages published' };
