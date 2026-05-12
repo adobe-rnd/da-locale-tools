@@ -136,7 +136,6 @@ class NxLocales extends LitElement {
         text: `${n} page(s) published — URLs copied to clipboard.`,
         publishedUrlsText: respJoined,
       };
-      setTimeout(() => { this._message = undefined; }, 2500);
       return;
     }
     this._message = {
@@ -162,7 +161,6 @@ class NxLocales extends LitElement {
       text: `${urlCount} page(s) published — URLs copied to clipboard.`,
       publishedUrlsText: joined,
     };
-    setTimeout(() => { this._message = undefined; }, 2500);
   }
 
   async handlePublishAll(items) {
