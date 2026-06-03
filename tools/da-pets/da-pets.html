@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DA Pets</title>
+  <link rel="stylesheet" href="./da-pets.css">
+</head>
+<body style="display:none">
+  <header class="controls">
+    <div class="controls-row">
+      <select id="animal-select" aria-label="Choose animal">
+        <option value="cat-ginger">🐱 Ginger Cat</option>
+        <option value="cat-grey">🐱 Grey Cat</option>
+        <option value="cat-grey-white">🐱 Grey &amp; White Cat</option>
+        <option value="dog">🐶 Dog</option>
+        <option value="rubber-duck">🐥 Rubber Duck</option>
+        <option value="dino">🦕 Dino</option>
+        <option value="chicken">🐔 Chicken</option>
+      </select>
+      <img id="btn-add" src="https://da.live/img/icons/s2-icon-add-20-n.svg" alt="Add Pet">
+      <img id="btn-clear" src="https://da.live/blocks/browse/da-browse/img/Smock_Delete_18_N.svg" alt="Clear All">
+      <span id="pet-count"></span>
+    </div>
+  </header>
+  <div id="stage"></div>
+  <script type="module" src="./da-pets.js"></script>
+</body>
+</html>

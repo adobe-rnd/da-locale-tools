@@ -1,0 +1,169 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Controls bar ────────────────────────────────────── */
+
+.controls {
+  flex-shrink: 0;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fafafa;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.controls-row select {
+  flex: 1;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  background: #fff;
+  cursor: pointer;
+}
+
+#btn-add,
+#btn-clear {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: opacity 0.12s;
+}
+
+#btn-clear { filter: invert(1); }
+
+#btn-add:hover,
+#btn-clear:hover { opacity: 1; }
+
+#pet-count {
+  color: #999;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 2px;
+}
+
+/* ── Stage ───────────────────────────────────────────── */
+
+#stage {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* thin floor line */
+#stage::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #ddd;
+}
+
+/* ── Pets ────────────────────────────────────────────── */
+
+img.pet {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  cursor: pointer;
+
+  /* GIFs face right; default = face left */
+  transform: scaleX(-1);
+  transition: filter 0.1s;
+}
+
+img.pet:hover { filter: brightness(1.15) drop-shadow(0 0 3px rgb(0 0 0 / 20%)); }
+
+/* ── Speech bubbles ──────────────────────────────────── */
+
+.bubble {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateX(-50%);
+  animation: bubble-pop 2.2s ease-in-out forwards;
+  z-index: 10;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 12px;
+  border: 4px solid transparent;
+  border-top-color: #333;
+}
+
+@keyframes bubble-pop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.6) translateY(4px);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) translateY(0);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9) translateY(-6px);
+  }
+}
+
+/* ── Empty state ─────────────────────────────────────── */
+
+.empty-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #bbb;
+  pointer-events: none;
+}
+
+.empty-state span {
+  font-size: 36px;
+  line-height: 1;
+}
