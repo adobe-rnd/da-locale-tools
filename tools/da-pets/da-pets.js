@@ -10,13 +10,15 @@ const ANIMALS = {
   'cat-grey-white': { color: 'grey_white', label: 'Grey & White Cat', canLie: true },
   dog: { color: 'brown', label: 'Dog', canLie: true },
   'rubber-duck': { color: 'yellow', label: 'Rubber Duck', canLie: false },
-  dino: { color: 'green', label: 'Dino', canLie: false },
   chicken: { color: 'white', label: 'Chicken', canLie: false },
+  dino: { color: 'green', label: 'Dino', canLie: false },
+  'ew-mascot': { color: 'red', label: 'EW Mascot', canLie: false },
 };
 
 const SPEECH = [
   'Hello!', '*purr*', 'Feed me', 'Pet me', 'zzzz', '...', '!', 'Hmm?',
   'Bork!', 'Quack', 'bawk!', 'Rawr', ':3', 'UwU', 'nom nom',
+  'Let\'s build!', 'How can I help you?', 'I love AI!', 'Let\'s write some prompts!',
 ];
 
 const MEETING_SPEECH = [
